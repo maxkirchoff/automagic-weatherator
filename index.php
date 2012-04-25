@@ -1,33 +1,32 @@
 <?php
+// TODO: Hookup a new caching method!
 
-	// TODO: Hookup a new caching method!
+// fetch filename
+$filename = "http://www.weather.gov/xml/current_obs/KPDX.xml";
 
-	// fetch filename
-	$filename = "http://www.weather.gov/xml/current_obs/KPDX.xml";
+$xml = simplexml_load_file($filename);
 
-	$xml = simplexml_load_file($filename);
+$current = $xml->xpath("/current_observation");
 
-	$current = $xml->xpath("/current_observation");
+// CURRENT ARRAY to STRING
+$current_str = http_build_query($current);
 
-	// CURRENT ARRAY to STRING
-	$current_str = http_build_query($current);
+// "SNOW" REGEX
+$snow = '/(?i)snow/';
 
-	// "SNOW" REGEX
-	$snow = '/(?i)snow/';
-
-	// MATRIX FOR CURRENT ONLY
-	if (preg_match($snow, $current_str))
-	{
-		$class = "yes";
-		$answer = "Yes!";
-		$long_answer = "Yes! COMMENCE PANIC!";
-	}
-	else
-	{
-		$class = "no";
-		$answer = "No.";
-		$long_answer = "No.";
-	}
+// MATRIX FOR CURRENT ONLY
+if (preg_match($snow, $current_str))
+{
+	$class = "yes";
+	$answer = "Yes!";
+	$long_answer = "Yes! COMMENCE PANIC!";
+}
+else
+{
+	$class = "no";
+	$answer = "No.";
+	$long_answer = "No.";
+}
 ?>
 <html>
     <head>
