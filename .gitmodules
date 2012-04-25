@@ -1,0 +1,3 @@
+[submodule "lib/simpleCache"]
+	path = lib/simpleCache
+	url = git@github.com:maxkirchoff/PHP-SimpleCache.git
