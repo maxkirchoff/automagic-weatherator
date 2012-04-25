@@ -1,11 +1,16 @@
 <?php
-// We need us some simpleCache!
+// We need us some simpleCache! - This uses my fork which is set as a submodule currently to this project
 require('lib/simpleCache/simpleCache.php');
-$cache = new SimpleCache();
-$weather_feed = $cache->get_data('weather_feed', 'http://www.weather.gov/xml/current_obs/KPDX.xml', 60);
 
+$cache = new SimpleCache();
+
+// The cache wants 3 params: a label, an API call that generates cache-able data, and a cache_time (optional - default is an hour)
+$weather_feed = $cache->get_data('weather_feed', 'http://www.weather.gov/xml/current_obs/KPDX.xml', 600);
+
+// We're loading this XML from cache, which dumps into a string
 $weather_xml = simplexml_load_string($weather_feed);
 
+// Search for the current weather path
 $current = $weather_xml->xpath("/current_observation");
 
 // CURRENT ARRAY to STRING
