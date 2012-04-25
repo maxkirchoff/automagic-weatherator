@@ -1,0 +1,5 @@
+# OSX crap
+*.DS_Store
+
+# storm
+.idea
