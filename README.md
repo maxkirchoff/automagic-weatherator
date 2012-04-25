@@ -1,12 +1,7 @@
 Automagic Weatherator
 =====================
 
-<s>Domain determined simplified weather information.</s> A simple script to see if it's snowing at Portland Airport.
-
-This started as the overly simplistic XML scraper I built to power the wunderful [isitsnowinginpdx.com][Automagic Weatherator
-=====================
-
-Domain determined simplified weather information.
+~~Domain determined simplified weather information.~~ A simple script to see if it's snowing at Portland Airport.
 
 ## Then
 This started as the overly simplistic XML scraper I built to power the wunderful [isitsnowinginpdx.com](http://www.isitsnowinginpdx.com) novelty site. That original iteration was built in 20 minutes and has sat untouched for 2 1/2 years entertaining Portlanders and non-Portlanders alike.
