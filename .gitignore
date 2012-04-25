@@ -1,5 +1,8 @@
 # OSX crap
 *.DS_Store
 
+# caching
+cache/
+
 # storm
 .idea

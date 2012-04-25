@@ -1,12 +1,12 @@
 <?php
-// TODO: Hookup a new caching method!
+// We need us some simpleCache!
+require('lib/simpleCache/simpleCache.php');
+$cache = new SimpleCache();
+$weather_feed = $cache->get_data('weather_feed', 'http://www.weather.gov/xml/current_obs/KPDX.xml', 60);
 
-// fetch filename
-$filename = "http://www.weather.gov/xml/current_obs/KPDX.xml";
+$weather_xml = simplexml_load_string($weather_feed);
 
-$xml = simplexml_load_file($filename);
-
-$current = $xml->xpath("/current_observation");
+$current = $weather_xml->xpath("/current_observation");
 
 // CURRENT ARRAY to STRING
 $current_str = http_build_query($current);
@@ -18,7 +18,7 @@ $snow = '/(?i)snow/';
 if (preg_match($snow, $current_str))
 {
 	$class = "yes";
-	$answer = "Yes!";
+	$answer = "Yes";
 	$long_answer = "Yes! COMMENCE PANIC!";
 }
 else
